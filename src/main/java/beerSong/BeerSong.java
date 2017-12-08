@@ -7,7 +7,7 @@ public class BeerSong {
         String result = "";
         if (i > 2 && i < 100){
             int newValue = i-1;
-           result = String.format("%d bottles of beer on the wall, %d bottles of beer.\n" +
+            result = String.format("%d bottles of beer on the wall, %d bottles of beer.\n" +
                     "Take one down and pass it around, %d bottles of beer on the wall.\n\n", i, i, newValue);
         }
         else if (i == 2) {
