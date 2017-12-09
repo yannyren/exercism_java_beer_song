@@ -4,7 +4,7 @@ package beerSong;
 public class BeerSong {
 
 
-    public static String verse(int i) {
+    public String verse(int i) {
         if(i < 0 ) throw new IllegalArgumentException ("Time to fill up the fridge :)");
         switch (i) {
 
