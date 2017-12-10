@@ -4,8 +4,8 @@ package beerSong;
 public class BeerSong {
 
 
-    public String verse(int i) {
-        if(i < 0 ) throw new IllegalArgumentException ("Time to fill up the fridge :)");
+    public String verse(int i) throws IllegalArgumentException{
+        if(i < 0 ) throw new IllegalArgumentException ("Time to fill up the fridge!!!");
         switch (i) {
 
             case(2): return "2 bottles of beer on the wall, 2 bottles of beer.\n" +
@@ -24,6 +24,9 @@ public class BeerSong {
     }
 
     public String sing(int startingVerse, int endVerse) {
+        if (startingVerse < endVerse || startingVerse < 0 || endVerse < 0  ) {
+            return "the first number should be bigger than or equal to the second number and the second number should be bigger than -1";
+        }
         String result = "";
         for (int x = startingVerse ; x >= endVerse; x -- ){
             result = result + this.verse(x);
@@ -32,6 +35,6 @@ public class BeerSong {
     }
 
     public String singSong() {
-       return this.sing(99,0);
+       return this.sing(99, 0);
     }
 }

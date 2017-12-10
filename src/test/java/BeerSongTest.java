@@ -1,9 +1,12 @@
 import beerSong.BeerSong;
+import static org.hamcrest.core.Is.is;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Ignore;
 import org.junit.Before;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class BeerSongTest {
 
@@ -13,6 +16,7 @@ public class BeerSongTest {
     public void setup(){
         beerSong = new BeerSong();
     }
+
 
     @Test
     public void singFirstVerse() {
@@ -170,6 +174,59 @@ public class BeerSongTest {
                         "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n\n" +
                         "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n\n",
                 beerSong.singSong());
+    }
+
+//Extra tests written by Yan Ren
+
+    //added test for exception throw
+    @Test
+    public void TestForExceptionMessage() {
+        try{
+            beerSong.verse(-1);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), is("Time to fill up the fridge!!!"));
+        }
+    }
+
+
+    //test when end verse is not zero
+    @Test
+    public void whenEndVerseIsNotZero() {
+        assertEquals( "4 bottles of beer on the wall, 4 bottles of beer.\nTake one down and pass it around, 3 bottles of beer on the wall.\n\n" +
+                        "3 bottles of beer on the wall, 3 bottles of beer.\nTake one down and pass it around, 2 bottles of beer on the wall.\n\n" +
+                        "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n\n" +
+                        "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n\n",
+                beerSong.sing(4,1));
+    }
+
+
+    @Test
+    //test when int start in sing method is smaller than 0;
+    public void whenStartIsSmallerThanZero () {
+        assertEquals("the first number should be bigger than or equal to the second number and the second number should be bigger than -1",
+                beerSong.sing(-1, 0));
+    }
+
+
+    @Test
+    //test when int endverse in sing method is smaller than 0;
+    public void whenEndverseIsSmallerThanZero () {
+        assertEquals("the first number should be bigger than or equal to the second number and the second number should be bigger than -1",
+                beerSong.sing(0, -1));
+    }
+
+    @Test
+    //test when int start  < int endverse in sing method;
+    public void whenStartIsSmallerThanEndverse () {
+        assertEquals("the first number should be bigger than or equal to the second number and the second number should be bigger than -1",
+                beerSong.sing(1, 2));
+    }
+
+    @Test
+    //test when int start = int endverse in sing method;
+    public void whenStartEqualsEndverse() {
+        assertEquals("4 bottles of beer on the wall, 4 bottles of beer.\nTake one down and pass it around, 3 bottles of beer on the wall.\n\n",
+                beerSong.sing(4, 4));
     }
 
 }
