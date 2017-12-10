@@ -178,7 +178,7 @@ public class BeerSongTest {
 
 //Extra tests written by Yan Ren
 
-    //added test for exception throw
+   
     @Test
     public void TestForExceptionMessage() {
         try{
@@ -189,7 +189,6 @@ public class BeerSongTest {
     }
 
 
-    //test when end verse is not zero
     @Test
     public void whenEndVerseIsNotZero() {
         assertEquals( "4 bottles of beer on the wall, 4 bottles of beer.\nTake one down and pass it around, 3 bottles of beer on the wall.\n\n" +
@@ -201,7 +200,7 @@ public class BeerSongTest {
 
 
     @Test
-    //test when int start in sing method is smaller than 0;
+
     public void whenStartIsSmallerThanZero () {
         assertEquals("the first number should be bigger than or equal to the second number and the second number should be bigger than -1",
                 beerSong.sing(-1, 0));
@@ -209,21 +208,21 @@ public class BeerSongTest {
 
 
     @Test
-    //test when int endverse in sing method is smaller than 0;
+
     public void whenEndverseIsSmallerThanZero () {
         assertEquals("the first number should be bigger than or equal to the second number and the second number should be bigger than -1",
                 beerSong.sing(0, -1));
     }
 
     @Test
-    //test when int start  < int endverse in sing method;
+
     public void whenStartIsSmallerThanEndverse () {
         assertEquals("the first number should be bigger than or equal to the second number and the second number should be bigger than -1",
                 beerSong.sing(1, 2));
     }
 
     @Test
-    //test when int start = int endverse in sing method;
+
     public void whenStartEqualsEndverse() {
         assertEquals("4 bottles of beer on the wall, 4 bottles of beer.\nTake one down and pass it around, 3 bottles of beer on the wall.\n\n",
                 beerSong.sing(4, 4));
